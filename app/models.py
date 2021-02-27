@@ -1,8 +1,8 @@
 from . import db
 from datetime import datetime
-# from . import login_manager
-# from werkzeug.security import generate_password_hash,check_password_hash
-# from flask_login import UserMixin
+from . import login_manager
+from werkzeug.security import generate_password_hash,check_password_hash
+from flask_login import UserMixin
 #...
 
 @login_manager.user_loader
@@ -52,52 +52,52 @@ class User(UserMixin,db.Model):
     pitch = db.relationship('Pitches', backref='author', lazy='dynamic')
     pass_secure = db.Column(db.String(255))
     
-#     @property
-#     def password(self):
-#         raise AttributeError('You cannot read the password attribute')
+    @property
+    def password(self):
+        raise AttributeError('You cannot read the password attribute')
 
-#     @password.setter
-#     def password(self, password):
-#         self.pass_secure = generate_password_hash(password)
+    @password.setter
+    def password(self, password):
+        self.pass_secure = generate_password_hash(password)
     
 
-#     def verify_password(self,password):
-#         return check_password_hash(self.pass_secure,password)
+    def verify_password(self,password):
+        return check_password_hash(self.pass_secure,password)
     
 
-#     def __repr__(self):
-#         return f'User {self.author}'
+    def __repr__(self):
+        return f'User {self.author}'
 
 
-# class Role(db.Model):
-#     __tablename__ = 'roles'
+class Role(db.Model):
+    __tablename__ = 'roles'
 
-#     id = db.Column(db.Integer,primary_key = True)
-#     name = db.Column(db.String(255))
-#     users = db.relationship('User',backref = 'role',lazy="dynamic")
-
-
-#     def __repr__(self):
-#         return f'User {self.name}'
+    id = db.Column(db.Integer,primary_key = True)
+    name = db.Column(db.String(255))
+    users = db.relationship('User',backref = 'role',lazy="dynamic")
 
 
-# class Comments(db.Model):
-#     __tablename__ = 'comments'
-#     id = db.Column(db.Integer, primary_key=True)
-#     comment = db.Column(db.String(255))
-#     date_posted = db.Column(db.DateTime(250), default=datetime.utcnow)
-#     pitches_id = db.Column(db.Integer, db.ForeignKey("pitches.id"))
-#     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    def __repr__(self):
+        return f'User {self.name}'
 
 
-#     def save_comment(self):
-#         db.session.add(self)
-#         db.session.commit()
+class Comments(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key=True)
+    comment = db.Column(db.String(255))
+    date_posted = db.Column(db.DateTime(250), default=datetime.utcnow)
+    pitches_id = db.Column(db.Integer, db.ForeignKey("pitches.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
-#     @classmethod
-#     def get_comment(cls,id):
-#         comments = Comments.query.filter_by(pitches_id=id).all()
-#         return comments
 
-#     def __repr__(self):
-#         return f"Comments('{self.comment}', '{self.date_posted}')"
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_comment(cls,id):
+        comments = Comments.query.filter_by(pitches_id=id).all()
+        return comments
+
+    def __repr__(self):
+        return f"Comments('{self.comment}', '{self.date_posted}')"
