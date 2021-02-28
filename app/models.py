@@ -22,7 +22,6 @@ class Pitches(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     comments = db.relationship('Comments', backref='title', lazy='dynamic')
 
-
     def save_pitch(self):
         db.session.add(self)
         db.session.commit()
@@ -35,9 +34,6 @@ class Pitches(db.Model):
 
     def __repr__(self):
         return f"Pitches {self.pitch}','{self.date}')"     
-
-
-
 
 
 class User(UserMixin,db.Model):
@@ -76,10 +72,8 @@ class Role(db.Model):
     name = db.Column(db.String(255))
     users = db.relationship('User',backref = 'role',lazy="dynamic")
 
-
     def __repr__(self):
         return f'User {self.name}'
-
 
 class Comments(db.Model):
     __tablename__ = 'comments'
