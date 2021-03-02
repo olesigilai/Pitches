@@ -1,5 +1,5 @@
 #   Pitches
-#### this Projects was created on 27/02/2021.
+#### this Project was created on 27/02/2021.
 ## Author
 Gideon Ole Sigilai
 ## Pitch  website

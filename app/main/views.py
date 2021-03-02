@@ -40,6 +40,7 @@ def index():
 
 
 @main.route('/categories/<cate>')
+@login_required
 def category(cate):
     '''
     function to return the pitches by category
