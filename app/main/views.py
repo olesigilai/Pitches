@@ -78,10 +78,6 @@ def update_profile(uname):
 
     return render_template('profile/update.html',form =form)
 
-
-
-
-
 @main.route('/user/<uname>/update/pic',methods= ['POST'])
 @login_required
 def update_pic(uname):
