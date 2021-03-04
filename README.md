@@ -3,7 +3,7 @@
 ## Author
 Gideon Ole Sigilai
 ## Pitch  website
-This project helps users to make important decisions in life within a minute. Users are able to comment and view other app usrs's comments.
+This is a website dedicate to helping users to make important decisions in life within a minute. Users are able to comment and view other app usrs's comments.
 ## project Set up Instructions
 * Ctrl + alt + t to open the terminal
 * now git clone https://github.com/olesigilai/Pitches.git
@@ -13,11 +13,11 @@ This project helps users to make important decisions in life within a minute. Us
 ## Known Bugs
 
 ## Technologies Used
-*Python
-*HTML5
-*CSS
-*Heroku
-*Github
+*Python-Flask - To build the website with flask as a framework and for making folder structure
+*HTML5- To display and for Hypertext
+*CSS- Cascading styles for styling the html
+*Heroku- to host the website
+*Github- to host the web building process with a live link
 ## Support and contact details
 My sincere gratitudes to my TM  Mr. Edgar Kibet for the guidance during this project implementation.
 Reach me on email: ole_sigilai@yahoo.com
